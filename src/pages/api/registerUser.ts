@@ -19,11 +19,13 @@ function hmac_signature(body: object) {
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     if (!WEBHOOK_SECRETKEY) {
-      res.status(500).json({ error: "Internal Server Error" });
+      res.status(500);
     }
 
     const signatureWebhook = req.headers["x-yampi-hmac-sha256"];
     const hmacSignature = hmac_signature(req.body);
+
+    console.log(signatureWebhook, hmacSignature);
 
     if (signatureWebhook == hmacSignature) {
       console.log("Authenticated");
