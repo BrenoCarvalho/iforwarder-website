@@ -1,31 +1,34 @@
 import { createHmac } from "crypto";
 import { NextApiRequest, NextApiResponse } from "next";
 
-const WEBHOOK_SECRETKEY = process.env.WEBHOOK_SECRETKEY;
+const WEBHOOK_SECRETKEY = process.env.WEBHOOK_SECRETKEY
+  ? process.env.WEBHOOK_SECRETKEY
+  : "";
 
 function hmac_signature(body: object) {
-  if (!WEBHOOK_SECRETKEY) {
-    return "";
-  }
-
   const payload = JSON.stringify(body);
-  const sha256 = createHmac("sha256", WEBHOOK_SECRETKEY)
+
+  const hmac = createHmac("sha256", WEBHOOK_SECRETKEY)
     .update(payload)
     .digest("base64");
 
-  return sha256;
+  const encoded = Buffer.from(hmac, "utf8").toString("base64");
+
+  console.log(encoded);
+
+  return hmac;
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
-    if (!WEBHOOK_SECRETKEY) {
+    if (WEBHOOK_SECRETKEY == "") {
       res.status(500);
     }
 
     const signatureWebhook = req.headers["x-yampi-hmac-sha256"];
     const hmacSignature = hmac_signature(req.body);
 
-    console.log(signatureWebhook, hmacSignature);
+    console.log(WEBHOOK_SECRETKEY, hmacSignature);
 
     if (signatureWebhook == hmacSignature) {
       console.log("Authenticated");
