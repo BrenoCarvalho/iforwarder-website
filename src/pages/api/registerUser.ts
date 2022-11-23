@@ -10,10 +10,6 @@ function hmac_signature(body: object) {
     .update(payload)
     .digest("base64");
 
-  const encoded = Buffer.from(hmac, "utf8").toString("base64");
-
-  console.log(encoded);
-
   return hmac;
 }
 
@@ -27,7 +23,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const signatureWebhook = req.headers["x-yampi-hmac-sha256"];
     const hmacSignature = hmac_signature(req.body);
 
-    console.log(WEBHOOK_SECRETKEY, hmacSignature);
+    console.log(signatureWebhook, hmacSignature);
 
     if (signatureWebhook == hmacSignature) {
       console.log("Authenticated");
