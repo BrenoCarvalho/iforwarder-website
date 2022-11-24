@@ -104,14 +104,13 @@ async function sendEmail(user: user, license: string) {
     },
   });
 
-  console.log(__dirname);
   const handlebarOptions = {
     viewEngine: {
       extName: ".handlebars",
-      partialsDir: path.resolve(__dirname),
+      partialsDir: path.join(process.cwd(), "templates"),
       defaultLayout: false,
     },
-    viewPath: path.resolve(__dirname),
+    viewPath: path.join(process.cwd(), "templates"),
     extName: ".handlebars",
   };
 
@@ -140,6 +139,7 @@ export default async function handler(
       res.status(500).json({ error: "Invalid WEBHOOK_SECRETKEY" });
       return;
     }
+    console.log(path.join(process.cwd(), "templates"));
 
     var bodyRaw = await buffer(req);
 
