@@ -152,16 +152,18 @@ export default function Page() {
             direction={["column", "column", "row", "row"]}
             gap="8"
           >
-            <Text
-              fontSize="36px"
-              fontWeight="semibold"
-              mr={["0", "0", "10", "10"]}
-            >
-              Envio imediato
+            <Flex direction="column">
+              <Text
+                fontSize="32px"
+                fontWeight="semibold"
+                mr={["0", "0", "10", "10"]}
+              >
+                Envio imediato
+              </Text>
               <Text fontSize="xl" fontWeight="normal">
                 Apos a compra o bot será enviado imediatamente ao seu e-mail.
               </Text>
-            </Text>
+            </Flex>
 
             <Image
               src="ilustration.svg"
