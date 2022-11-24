@@ -3,6 +3,8 @@ import { buffer } from "micro";
 import { NextApiRequest, NextApiResponse } from "next";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 const nodemailer = require("nodemailer");
+const path = require("path");
+var nodemailerHandlebars = require("nodemailer-express-handlebars");
 
 export const config = {
   api: {
@@ -38,7 +40,8 @@ async function isAuthenticated(
 }
 
 interface user {
-  name: string;
+  full_name: string;
+  first_name: string;
   email: string;
   cpf: number;
   phone: number;
@@ -54,7 +57,7 @@ async function getUser(
     .select("id")
     .eq("email", user.email)
     .eq("phone1", user.phone)
-    .eq("name", user.name);
+    .eq("name", user.full_name);
 
   if (response.error) {
     res.status(500).json({ error: response.error });
@@ -72,7 +75,7 @@ async function createUser(res: NextApiResponse, user: user) {
 
   const response = await supabase.from("Users").insert([
     {
-      name: user.name,
+      name: user.full_name,
       email: user.email,
       cpf: user.cpf,
       phone1: user.phone,
@@ -101,12 +104,30 @@ async function sendEmail(user: user, license: string) {
     },
   });
 
-  await transporter.sendMail({
+  const handlebarOptions = {
+    viewEngine: {
+      extName: ".handlebars",
+      partialsDir: path.resolve("./"),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve("./"),
+    extName: ".handlebars",
+  };
+
+  transporter.use("compile", nodemailerHandlebars(handlebarOptions));
+
+  var mailOptions = {
     from: process.env.UMBLER_USER,
     to: user.email,
     subject: "Telegram Control License Key",
-    text: "Licença: " + license,
-  });
+    template: "email",
+    context: {
+      first_name: user.first_name,
+      license: license,
+    },
+  };
+
+  await transporter.sendMail(mailOptions);
 }
 
 export default async function handler(
@@ -126,7 +147,8 @@ export default async function handler(
     const bodyData = JSON.parse(bodyRaw.toString());
 
     const user = {
-      name: bodyData.resource.customer.data.name,
+      full_name: bodyData.resource.customer.data.name,
+      first_name: bodyData.resource.customer.data.first_name,
       email: bodyData.resource.customer.data.email,
       cpf: bodyData.resource.customer.data.cpf,
       phone: 55 + bodyData.resource.customer.data.phone.full_number,
