@@ -8,6 +8,7 @@ import {
   Card as ChakraCard,
   CardHeader,
   Link,
+  Image,
 } from "@chakra-ui/react";
 import Head from "next/head";
 import Card from "../components/Card.component";
@@ -138,6 +139,34 @@ export default function Page() {
             <Card
               title="Além do envio"
               text="No Telegram Control juntamente com o chat de origem, edita, marca e deleta a mensagem."
+            />
+          </Flex>
+          <Flex
+            minW={["", "", "", ""]}
+            w={["100%", "90%", "750px", "950px"]}
+            h="100%"
+            padding="10"
+            justifyContent="space-around"
+            align="center"
+            mt={["8", "8", "14", "14"]}
+            direction={["column", "column", "row", "row"]}
+            gap="8"
+          >
+            <Text
+              fontSize="36px"
+              fontWeight="semibold"
+              mr={["0", "0", "10", "10"]}
+            >
+              Envio imediato
+              <Text fontSize="xl" fontWeight="normal">
+                Apos a compra o bot será enviado imediatamente ao seu e-mail.
+              </Text>
+            </Text>
+
+            <Image
+              src="ilustration.svg"
+              alt=""
+              width={["100%", "90%", "300px", "400px"]}
             />
           </Flex>
           <Divider
