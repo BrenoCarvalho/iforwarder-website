@@ -12,6 +12,7 @@ import {
 import Head from "next/head";
 import Card from "../components/Card.component";
 import styles from "../styles/Player.module.css";
+import { BsTelegram } from "react-icons/bs";
 
 export default function Page() {
   return (
@@ -68,7 +69,7 @@ export default function Page() {
             />
           </AspectRatio>
           <Link
-            href="https://t.me/brenocarvalho1"
+            href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
             style={{ textDecoration: "none" }}
           >
             <Button
@@ -159,20 +160,25 @@ export default function Page() {
                 Garanta seu acesso agora mesmo.
               </Heading>
             </CardHeader>
-            <Link
-              href="https://t.me/brenocarvalho1"
-              style={{ textDecoration: "none" }}
-            >
-              <Button
-                bg="#03a9f4"
-                color="white"
-                _hover={{ bg: "#008bc9" }}
-                mb={["4", "4", "0", "0"]}
-                mt={["1", "1", "0", "0"]}
+            <Flex gap="2" align="center">
+              <Link
+                href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
+                style={{ textDecoration: "none" }}
               >
-                Garantir acesso
-              </Button>
-            </Link>
+                <Button
+                  bg="#03a9f4"
+                  color="white"
+                  _hover={{ bg: "#008bc9" }}
+                  mb={["4", "4", "0", "0"]}
+                  mt={["1", "1", "0", "0"]}
+                >
+                  Garantir acesso
+                </Button>
+              </Link>
+              <Link href="https://t.me/brenocarvalho1">
+                <BsTelegram fontSize="37" color="#03a9f4" />
+              </Link>
+            </Flex>
           </ChakraCard>
         </Flex>
       </main>
