@@ -104,14 +104,14 @@ async function sendEmail(user: user, license: string) {
     },
   });
 
-  console.log(path.resolve("./"));
+  console.log(__dirname);
   const handlebarOptions = {
     viewEngine: {
       extName: ".handlebars",
-      partialsDir: path.resolve("./"),
+      partialsDir: path.resolve(__dirname),
       defaultLayout: false,
     },
-    viewPath: path.resolve("./"),
+    viewPath: path.resolve(__dirname),
     extName: ".handlebars",
   };
 
@@ -136,30 +136,29 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    console.log(path.resolve("./"));
-    // if (!process.env.WEBHOOK_SECRETKEY) {
-    //   res.status(500).json({ error: "Invalid WEBHOOK_SECRETKEY" });
-    //   return;
-    // }
+    if (!process.env.WEBHOOK_SECRETKEY) {
+      res.status(500).json({ error: "Invalid WEBHOOK_SECRETKEY" });
+      return;
+    }
 
-    // var bodyRaw = await buffer(req);
+    var bodyRaw = await buffer(req);
 
-    // if (!(await isAuthenticated(req, res, bodyRaw))) return;
+    if (!(await isAuthenticated(req, res, bodyRaw))) return;
 
-    // const bodyData = JSON.parse(bodyRaw.toString());
+    const bodyData = JSON.parse(bodyRaw.toString());
 
-    // const user = {
-    //   full_name: bodyData.resource.customer.data.name,
-    //   first_name: bodyData.resource.customer.data.first_name,
-    //   email: bodyData.resource.customer.data.email,
-    //   cpf: bodyData.resource.customer.data.cpf,
-    //   phone: 55 + bodyData.resource.customer.data.phone.full_number,
-    // };
+    const user = {
+      full_name: bodyData.resource.customer.data.name,
+      first_name: bodyData.resource.customer.data.first_name,
+      email: bodyData.resource.customer.data.email,
+      cpf: bodyData.resource.customer.data.cpf,
+      phone: 55 + bodyData.resource.customer.data.phone.full_number,
+    };
 
-    // const license = await createUser(res, user);
-    // if (!license) return;
+    const license = await createUser(res, user);
+    if (!license) return;
 
-    // await sendEmail(user, license);
+    await sendEmail(user, license);
     res.status(200).json({ status: "Successfuly" });
   }
 }
