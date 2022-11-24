@@ -25,7 +25,7 @@ export default function Page() {
         <title>Bot de repasse de mensagens para Telegram</title>
         <meta
           name="description"
-          content="Bot de encaminhamento automatico de mensagens para Telegram."
+          content="Encaminhe mensagens de forma automática e sem delay com um bot."
         />
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
