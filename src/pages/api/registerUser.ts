@@ -104,6 +104,7 @@ async function sendEmail(user: user, license: string) {
     },
   });
 
+  console.log(path.resolve("./"));
   const handlebarOptions = {
     viewEngine: {
       extName: ".handlebars",
