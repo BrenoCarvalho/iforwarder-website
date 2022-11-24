@@ -13,7 +13,10 @@ import {
 import Head from "next/head";
 import Card from "../components/Card.component";
 import styles from "../styles/Player.module.css";
-import { BsTelegram } from "react-icons/bs";
+import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
+import FaqContainer from "../components/faq/container.component";
+import FaqCard from "../components/faq/card.component";
+import { MdEmail } from "react-icons/md";
 
 export default function Page() {
   return (
@@ -142,7 +145,6 @@ export default function Page() {
             />
           </Flex>
           <Flex
-            minW={["", "", "", ""]}
             w={["100%", "90%", "750px", "950px"]}
             h="100%"
             padding="10"
@@ -167,7 +169,7 @@ export default function Page() {
 
             <Image
               src="ilustration.svg"
-              alt=""
+              alt="man ilustration"
               width={["100%", "90%", "300px", "400px"]}
             />
           </Flex>
@@ -191,26 +193,56 @@ export default function Page() {
                 Garanta seu acesso agora mesmo.
               </Heading>
             </CardHeader>
-            <Flex gap="2" align="center">
-              <Link
-                href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
-                style={{ textDecoration: "none" }}
+            <Link
+              href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
+              style={{ textDecoration: "none" }}
+            >
+              <Button
+                bg="#03a9f4"
+                color="white"
+                _hover={{ bg: "#008bc9" }}
+                mb={["4", "4", "0", "0"]}
+                mt={["1", "1", "0", "0"]}
               >
-                <Button
-                  bg="#03a9f4"
-                  color="white"
-                  _hover={{ bg: "#008bc9" }}
-                  mb={["4", "4", "0", "0"]}
-                  mt={["1", "1", "0", "0"]}
-                >
-                  Garantir acesso
-                </Button>
-              </Link>
-              <Link href="https://t.me/brenocarvalho1">
-                <BsTelegram fontSize="37" color="#03a9f4" />
-              </Link>
-            </Flex>
+                Garantir acesso
+              </Button>
+            </Link>
           </ChakraCard>
+          <Flex
+            w={["100%", "100%", "720px", "720px"]}
+            h="100%"
+            justifyContent="center"
+            align="center"
+            mt={["8", "8", "14", "14"]}
+            direction="column"
+            gap="4"
+          >
+            <Text fontSize="26px" fontWeight="bold">
+              Perguntas
+            </Text>
+            <FaqContainer>
+              <FaqCard
+                question="Preciso ser adm dos chats?"
+                answer="Não, apenas precisa ter permissão para encaminhar mensagem no chat destinatário."
+              />
+              <FaqCard
+                question="Posso ser banido pelo Telegram?"
+                answer="Em relação ao bot não tem risco nenhum de ser banido."
+              />
+              <FaqCard
+                question="Encaminha mensagens de chats com restrição de salvar conteúdo?"
+                answer="Sim, encaminha de qualquer tipo de chat, mesmo sendo privado e com restrições."
+              />
+              <FaqCard
+                question="Preciso deixar o computador ligado para funcionar?"
+                answer="Sim, ou você pode colocar o bot em um servidor VPS (máquina virtual)."
+              />
+              <FaqCard
+                question="Onde posso tirar minhas dúvidas?"
+                answer="Envie um email para suporte@telegramcontrol.com.br ou se preferir, envie uma mensagem no Telegram @brenocarvalho1"
+              />
+            </FaqContainer>
+          </Flex>
         </Flex>
       </main>
 
@@ -224,7 +256,19 @@ export default function Page() {
           padding="5"
           bg="#f7fafc"
           direction="column"
+          gap="2"
         >
+          <Flex w="100%" justifyContent="center" align="center" gap="2">
+            <Link href="https://t.me/brenocarvalho1">
+              <FaTelegramPlane fontSize="30" color="#718096" />
+            </Link>
+            <Link href="malito:suporte@telegramcontrol.com.br">
+              <MdEmail fontSize="30" color="#718096" />
+            </Link>
+            <Link href="https://www.youtube.com/watch?v=yqZivSaATo8">
+              <FaYoutube fontSize="30" color="#718096" />
+            </Link>
+          </Flex>
           <Text color="#718096">© 2022. Todos direitos reservados.</Text>
         </Flex>
       </footer>
