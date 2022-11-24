@@ -440,10 +440,14 @@ export default async function handler(
     }
 
     var bodyRaw = await buffer(req);
+    const bodyData = JSON.parse(bodyRaw.toString());
 
     if (!(await isAuthenticated(req, res, bodyRaw))) return;
 
-    const bodyData = JSON.parse(bodyRaw.toString());
+    if (bodyData.event != "order.paid") {
+      res.status(500).json({ error: "Unauthorized" });
+      return;
+    }
 
     const user = {
       full_name: bodyData.resource.customer.data.name,
