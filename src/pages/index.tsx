@@ -73,7 +73,7 @@ export default function Page() {
             />
           </AspectRatio>
           <Link
-            href="https://t.me/brenocarvalho1"
+            href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
             style={{ textDecoration: "none" }}
           >
             <Button
@@ -194,7 +194,7 @@ export default function Page() {
               </Heading>
             </CardHeader>
             <Link
-              href="https://t.me/brenocarvalho1"
+              href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
               style={{ textDecoration: "none" }}
             >
               <Button
