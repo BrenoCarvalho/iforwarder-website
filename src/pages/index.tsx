@@ -259,10 +259,10 @@ export default function Page() {
           gap="2"
         >
           <Flex w="100%" justifyContent="center" align="center" gap="2">
-            <Link href="https://t.me/brenocarvalho1">
+            <Link href="https://t.me/iforwarder">
               <FaTelegramPlane fontSize="30" color="#718096" />
             </Link>
-            <Link href="malito:suporte@telegramcontrol.com.br">
+            <Link href="malito:brenocarvalho709@gmail.com">
               <MdEmail fontSize="30" color="#718096" />
             </Link>
             <Link href="https://www.youtube.com/watch?v=yqZivSaATo8">
