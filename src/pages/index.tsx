@@ -17,6 +17,7 @@ import { FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import FaqContainer from "../components/faq/container.component";
 import FaqCard from "../components/faq/card.component";
 import { MdEmail } from "react-icons/md";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Page() {
   return (
@@ -177,6 +178,7 @@ export default function Page() {
             w={["75%", "75%", "70%", "50%"]}
             mt={["8", "8", "14", "14"]}
           />
+
           <ChakraCard
             direction={["column", "column", "row", "row"]}
             alignItems="center"
@@ -188,6 +190,28 @@ export default function Page() {
             p="3"
           >
             <CardHeader>
+              <Flex flexDirection="column">
+                <Text
+                  w="100%"
+                  align="left"
+                  fontSize="lg"
+                  fontWeight="bold"
+                  mb={2}
+                >
+                  Vitalício
+                </Text>
+                <Text
+                  w="100%"
+                  align="left"
+                  fontSize="3xl"
+                  mt={-3}
+                  fontWeight="extrabold"
+                >
+                  R$ 267,90
+                </Text>
+              </Flex>
+              <Divider w={"180px"} mt="6px" mb="20px" />
+
               <Heading size="md">É o que precisa?</Heading>
               <Heading size="md" color="#03a9f4">
                 Garanta seu acesso agora mesmo.
@@ -272,6 +296,8 @@ export default function Page() {
           <Text color="#718096">© 2022. Todos direitos reservados.</Text>
         </Flex>
       </footer>
+
+      <Analytics />
     </div>
   );
 }

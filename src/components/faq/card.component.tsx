@@ -1,18 +1,25 @@
-import { Card, Divider, Flex, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Card,
+  Collapse,
+  Divider,
+  Flex,
+  ScaleFade,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const FaqCard = ({ question, answer }: any) => {
-  const [isOpen, setOpen] = useState(false);
+  const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Card
-      onClick={() => setOpen(!isOpen)}
+      onClick={() => onToggle()}
       borderRadius="8"
-      paddingX="4"
-      paddingY="2"
-      gap="2"
+      paddingX="5"
+      paddingY="3"
       w="100%"
+      userSelect={"none"}
     >
       <Flex justifyContent="space-between" gap="2">
         <Text w="100%">{question}</Text>
@@ -22,12 +29,13 @@ const FaqCard = ({ question, answer }: any) => {
           <MdKeyboardArrowDown fontSize="26px" />
         )}
       </Flex>
-      {isOpen ? (
-        <>
-          <Divider />
-          <Text>{answer}</Text>
-        </>
-      ) : null}
+
+      <Collapse in={isOpen} animateOpacity style={{ width: "100%" }}>
+        <ScaleFade initialScale={0.9} in={isOpen}>
+          <Divider mb="8px" mt="10px" w="100%" />
+          <Text color={"#008bc9"}>{answer}</Text>
+        </ScaleFade>
+      </Collapse>
     </Card>
   );
 };
