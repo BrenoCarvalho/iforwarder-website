@@ -431,7 +431,7 @@ async function sendEmail(user: IUser, license: string) {
   });
 }
 
-export default async function handler(
+const registerUser = async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -466,4 +466,6 @@ export default async function handler(
     await sendEmail(user, license);
     res.status(200).json({ status: "Successfuly" });
   }
-}
+};
+
+// export default registerUser;

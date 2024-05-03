@@ -73,7 +73,7 @@ export default function Page() {
             />
           </AspectRatio>
           <Link
-            href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
+            href="https://t.me/iforwarder"
             style={{ textDecoration: "none" }}
           >
             <Button
@@ -93,10 +93,10 @@ export default function Page() {
             color="#718096"
             mt="10"
           >
-            Telegram Control é um bot focado em automatizar o repasse de
-            mensagens, como não tem relação com os grupos e canais, não tem a
-            necessidade de ser ADM dos chts, apenas ter permissão para enviar
-            mensagens no chat destinatário.
+            iForwarder é um bot focado em automatizar o repasse de mensagens,
+            como não tem relação com os grupos e canais, não tem a necessidade
+            de ser ADM dos chts, apenas ter permissão para enviar mensagens no
+            chat destinatário.
           </Text>
           {/* Topics */}
           <Flex
@@ -110,7 +110,7 @@ export default function Page() {
           >
             <Card
               title="Sem delay"
-              text="No Telegram Control as mensagens são enviadas instantâneamente, assim
+              text="No iForwarder as mensagens são enviadas instantâneamente, assim
           que chegadas no chat de origem."
             />
             <Card
@@ -141,7 +141,7 @@ export default function Page() {
             />
             <Card
               title="Além do envio"
-              text="No Telegram Control juntamente com o chat de origem, edita, marca e deleta a mensagem."
+              text="No iForwarder juntamente com o chat de origem, edita, marca e deleta a mensagem."
             />
           </Flex>
           <Flex
@@ -194,7 +194,7 @@ export default function Page() {
               </Heading>
             </CardHeader>
             <Link
-              href="https://telegram-control.pay.yampi.com.br/r/C5HWFDHVIX"
+              href="https://t.me/iforwarder"
               style={{ textDecoration: "none" }}
             >
               <Button
@@ -239,7 +239,7 @@ export default function Page() {
               />
               <FaqCard
                 question="Onde posso tirar minhas dúvidas?"
-                answer="Envie um email para suporte@telegramcontrol.com.br ou se preferir, envie uma mensagem no Telegram @brenocarvalho1"
+                answer="Envie um email para brenocarvalho709@gmail.com ou se preferir, envie uma mensagem no Telegram @iforwarder"
               />
             </FaqContainer>
           </Flex>
