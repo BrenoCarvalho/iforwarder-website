@@ -207,7 +207,7 @@ export default function Page() {
                   mt={-3}
                   fontWeight="extrabold"
                 >
-                  R$ 267,90
+                  R$ 197,90
                 </Text>
               </Flex>
               <Divider w={"180px"} mt="6px" mb="20px" />
